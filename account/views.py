@@ -1,9 +1,7 @@
-from django.contrib.auth.models import User
-from django.shortcuts import render
 from rest_framework import generics
-from rest_framework_simplejwt.views import TokenObtainPairView
 from account.serializers import *
-
+from rest_framework.permissions import IsAuthenticated
+from .permissions import IsOwner
 
 class RegisterAPIView(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -11,5 +9,12 @@ class RegisterAPIView(generics.CreateAPIView):
 
 
 
+class ProfileAPIView(generics.RetrieveUpdateAPIView):
+    queryset = User.objects.all()
+    serializer_class = ProfileSerializer
+    lookup_field = 'username'
+    permission_classes = [IsAuthenticated,IsOwner]
 
+    def get_object(self):
+        return self.request.user
 
