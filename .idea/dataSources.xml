@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="netflix-clone@localhost" uuid="bdbb7ba5-9fe2-48cb-bdb6-1e0bb6bf6ede">
+    <data-source source="LOCAL" name="NETFLIX_CLONE@localhost" uuid="dc6aaa9e-fd2f-4b8d-be18-ad390c927cbb">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/netflix-clone</jdbc-url>
+      <jdbc-url>jdbc:postgresql://localhost:5433/NETFLIX_CLONE</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

@@ -1,0 +1,46 @@
+services:
+  django:
+    container_name: django_netflix
+    build:
+      context: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/usr/src/app/
+    ports:
+      - 8001:8000
+    entrypoint: ["sh","/usr/src/app/entrypoint.sh"]
+    depends_on:
+      postgresql:
+        condition: service_healthy
+    networks:
+      - default
+
+  postgresql:
+    container_name: postgres_netflix
+    image: postgres:14
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: NETFLIX_CLONE
+    ports:
+        - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgres/data
+    networks:
+      - default
+    healthcheck:
+      test: [ "CMD-SHELL","pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+
+
+volumes:
+  postgres_data:
+
+networks:
+  default:
+    driver: bridge
+
+

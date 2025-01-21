@@ -1,5 +1,6 @@
 from datetime import timedelta
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -14,7 +15,7 @@ SECRET_KEY = "django-insecure-rfsow6p6830#)4l+q7h&ntrabq_%*oqs@%o3a6pk39d)ul+pn(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1","0.0.0.0"]
 
 
 # Application definition
@@ -73,10 +74,10 @@ WSGI_APPLICATION = "djangoProject.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "netflix-clone",
+        "NAME": "NETFLIX_CLONE",
         "USER": "postgres",
         "PASSWORD": "root",
-        "HOST": "localhost",
+        "HOST": "postgres_netflix",
         "PORT": "5432",
     }
 }
@@ -153,5 +154,5 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
-    )
+    ),
 }
